@@ -2,8 +2,14 @@ import React, { useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import ScrollBanner from "../components/ScrollBanner";
 import CategoryShowcase from "../components/CategoryShowcase";
+import ProductHome2 from "../components/ProductHome2";
+import ShopWomenHome2 from "../components/ShopWomenHome2";
+import Home2ElegantDressCollc from "../components/Home2ElegantDressCollc";
+import Home2StoryTell from "../components/Home2StoryTell";
+import Home2TopCollections from "../components/Home2TopCollections";
+import Imagezoom from "../components/Imagezoom";
 
-const Hero = () => {
+const Home2 = () => {
   const { scrollY } = useScroll();
   const fasX = useTransform(scrollY, [0, 600], [0, -150]);
   const hionX = useTransform(scrollY, [0, 600], [0, 150]);
@@ -71,8 +77,15 @@ const Hero = () => {
     </section>
       <ScrollBanner/>
     <CategoryShowcase/>
+    <ProductHome2/>
+    <ShopWomenHome2/>
+    <Home2ElegantDressCollc/>
+    <Home2StoryTell/>
+    <Home2TopCollections/>
+    <Imagezoom/>
+    
     </div>
   );
 };
 
-export default Hero;
+export default Home2;

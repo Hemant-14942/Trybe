@@ -34,14 +34,14 @@ export default function CategoryShowcase() {
   });
 
   // left image goes slightly down (0 to 40px)
-  const leftY = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const leftY = useTransform(scrollYProgress, [0, 1], [-100, 200]);
   // right image goes slightly up (0 to -40px)
-  const rightY = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const rightY = useTransform(scrollYProgress, [0, 1], [100, -100]);
 
   return (
     <section
       ref={containerRef}
-      className="flex md:h-screen w-screen flex-col md:flex-row items-center justify-around py-16 bg-[#faf8f3] text-black gap-10 md:gap-28"
+      className="flex overflow-hidden md:h-screen w-screen flex-col md:flex-row items-center justify-around py-16 bg-[#faf8f3] text-black gap-10 md:gap-28"
     >
       {/* Left Image */}
       <motion.div
