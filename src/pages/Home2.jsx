@@ -8,16 +8,21 @@ import Home2ElegantDressCollc from "../components/Home2ElegantDressCollc";
 import Home2StoryTell from "../components/Home2StoryTell";
 import Home2TopCollections from "../components/Home2TopCollections";
 import Imagezoom from "../components/Imagezoom";
+import Home2NewArrival from "../components/Home2NewArrival";
+import Home2FollowUs from "../components/Home2FollowUs";
+import Home2Carousel from "../components/Home2Carousel";
+import Home2Footer from "../components/Home2Footer";
 
 const Home2 = () => {
   const { scrollY } = useScroll();
   const fasX = useTransform(scrollY, [0, 600], [0, -150]);
   const hionX = useTransform(scrollY, [0, 600], [0, 150]);
   const textY = useTransform(scrollY, [0, 600], [0, 150]);
+  const rating = useTransform(scrollY, [0, 600], [0, 100]);
 
-  useEffect(() => {
-    scrollY.onChange((y) => console.log("ScrollY:", y));
-  }, [scrollY]);
+  // useEffect(() => {
+  //   scrollY.onChange((y) => console.log("ScrollY:", y));
+  // }, [scrollY]);
 
   return (
     <div>
@@ -59,9 +64,10 @@ const Home2 = () => {
       {/* Stats Section */}
       
       <motion.div 
-        className="absolute bottom-88 tracking-tighter sm:bottom-52 md:bottom-16 lg:bottom-auto left-[50%] md:left-[60%] lg:right-8 xl:right-16 2xl:right-60 lg:top-1/2 lg:transform lg:-translate-y-1/2 text-center lg:text-right z-30 flex flex-row lg:flex justify-center  sm:gap-4 lg:gap-8 items-center px-4 sm:px-0"
+        className="absolute bottom-78 tracking-tighter sm:bottom-52 md:bottom-16 lg:bottom-auto left-[50%] md:left-[60%] lg:right-8 xl:right-16 2xl:right-60 lg:top-1/2 lg:transform lg:-translate-y-1/2 text-center lg:text-right z-30 flex flex-row lg:flex justify-center  sm:gap-4 lg:gap-8 items-center px-4 sm:px-0"
         initial={{ y: 200, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
+        style={{ y: rating }}
         transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
       >
         <div className="text-1xl sm:text-3xl lg:text-4xl font-semibold border-r-2   border-slate-400 flex flex-col justify-center items-center min-w-[50px] sm:min-w-[100px]">
@@ -82,7 +88,11 @@ const Home2 = () => {
     <Home2ElegantDressCollc/>
     <Home2StoryTell/>
     <Home2TopCollections/>
-    <Imagezoom/>
+    {/* <Imagezoom/> */}
+    <Home2Carousel/>
+    <Home2NewArrival/>
+    <Home2FollowUs/>
+    <Home2Footer/>
     
     </div>
   );

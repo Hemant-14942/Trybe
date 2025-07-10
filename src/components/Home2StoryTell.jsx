@@ -1,17 +1,34 @@
 // src/components/Home2StoryTell.jsx
-import React from "react";
-
+import React,{useRef}  from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 export default function Home2StoryTell() {
+  const ref = useRef(null); 
+  
+  const {scrollYProgress} = useScroll(
+    {
+      target:ref,
+      offset:["start end","end start"],
+    }
+  );
+
+  const leftimg = useTransform(scrollYProgress, [0, 1], [0, -30]);
+  const rightimg = useTransform(scrollYProgress, [0, 1], [0, 30]);
+  const leftx = useTransform(scrollYProgress, [0, 1], [0, -200]);
+  const rightx = useTransform(scrollYProgress, [0, 1], [0, 150]);
+
   return (
-    <section className="bg-[#fdfbf7] py-20 px-6 md:px-16 flex flex-col items-center text-center md:flex-row md:justify-center md:text-left gap-10">
+    <section className="bg-[#fdfbf7] py-20 px-6 md:px-16 flex flex-col items-center text-center md:flex-row md:justify-center md:text-left ">
       {/* Left Image */}
-      <div className="md:w-1/3 flex justify-center">
+      <motion.div
+      ref={ref}
+      style={{rotate: leftimg, x: leftx}}
+       className="hidden md:flex md:w-1/3  justify-end ">
         <img
           src="/category1.jpeg" 
           alt="Left Style"
-          className="w-[250px] md:w-[300px] rotate-[-12deg] rounded-lg shadow-lg"
+          className="w-[250px] md:w-[300px] rounded-lg shadow-lg"
         />
-      </div>
+      </motion.div>
 
       {/* Center Text */}
       <div className="md:w-1/3 flex flex-col justify-center items-center md:items-start">
@@ -27,13 +44,16 @@ export default function Home2StoryTell() {
       </div>
 
       {/* Right Image */}
-      <div className="md:w-1/3 flex justify-center">
+      <motion.div
+      ref={ref}
+      style={{rotate: rightimg, x: rightx}}
+       className=" hidden md:flex md:w-1/3  justify-start">
         <img
           src="/model.png" 
           alt="Right Style"
-          className="w-[300px] md:w-[340px] rotate-[20deg] rounded-lg shadow-lg"
+          className="w-[300px] md:w-[340px]  rounded-lg shadow-lg"
         />
-      </div>
+      </motion.div>
     </section>
   );
 }
